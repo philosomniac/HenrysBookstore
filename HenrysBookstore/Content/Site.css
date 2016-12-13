@@ -63,7 +63,34 @@ textarea {
     padding-left: 15px;
     padding-right: 15px;
     background-color:lightgoldenrodyellow;
-    width:843px;
+    width:900px;
     margin-left:30px;
     margin-right:30px;
+    padding-top:15px;
+    min-height:600px;
+}
+.navbox{
+    background-color:gray;
+    margin:20px;
+    width:170px;
+    height:230px;
+    padding:5px;
+    float:left;
+}
+
+.navbox-text{
+    color:white;
+    text-align:center;
+}
+
+.navimagelink{
+    /*float:left;*/
+    clear:both;
+    position:center;
+    margin:auto;
+    width:90%;
+}
+
+footer{
+    clear:both;
 }

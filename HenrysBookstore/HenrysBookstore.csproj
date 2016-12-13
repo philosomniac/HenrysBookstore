@@ -52,6 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -167,19 +169,74 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="AUTHOR.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BOOK.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookstoreEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookstoreEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookstoreEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BookstoreEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookstoreEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BRANCH.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="INVENTORY.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="inventory_branch.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="noStock2.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PUBLISHER.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="vBookDetail.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vBookInventory.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WROTE.cs">
+      <DependentUpon>BookstoreEntities.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BookstoreEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BookstoreEntities.edmx</DependentUpon>
+      <LastGenOutput>BookstoreEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BookstoreEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BookstoreEntities.edmx</DependentUpon>
+      <LastGenOutput>BookstoreEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -196,6 +253,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="BookstoreEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BookstoreEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="BookstoreEntities.edmx.diagram">
+      <DependentUpon>BookstoreEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -258,6 +322,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
