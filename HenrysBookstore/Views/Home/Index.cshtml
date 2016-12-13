@@ -4,10 +4,13 @@
 
 <div class="navbox">
     <div class="navbox-text">
-        Browse Inventory
+        @Html.ActionLink("Browse Inventory","Inventory","Home", new { @class = "whitelink" })
+        @*Browse Inventory*@
     </div>
     <div class="navimagelink">
-        <img src="~/Content/Images/inventory.jpg" />
+        <a href='@Url.Action("Inventory","Home")'>
+            <img src="~/Content/Images/inventory.jpg" />
+        </a>
     </div>
 </div>
 
