@@ -26,5 +26,10 @@ namespace HenrysBookstore.Controllers
 
             return View();
         }
+
+        public ActionResult Inventory()
+        {
+            return View();
+        }
     }
 }
