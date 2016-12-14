@@ -116,5 +116,32 @@ namespace HenrysBookstore.Controllers
             }
                 return View();
         }
+
+        public ActionResult BrowseByPublisher(string publishercode = "")
+        {
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                if (publishercode.Length > 0)
+                {
+                    var bookQuery = dbContext.BOOKs.Include("PUBLISHER").
+                        Where(x => x.PUBLISHER_CODE == publishercode);
+
+                    ViewBag.BookList = bookQuery.ToList();
+                }
+
+                var publisherQuery = dbContext.PUBLISHERs;
+                List<PUBLISHER> publisherList = publisherQuery.ToList();
+                List<SelectListItem> publisherSelectList = new List<SelectListItem>();
+                foreach (var p in publisherList)
+                {
+                    publisherSelectList.Add(new SelectListItem { Text = p.PUBLISHER_NAME, Value = p.PUBLISHER_CODE });
+
+                }
+                ViewBag.publishers = publisherSelectList;
+            }
+
+            return View();
+        }
+
     }
 }

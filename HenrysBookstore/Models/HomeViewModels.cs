@@ -10,4 +10,14 @@ namespace HenrysBookstore.Models
     {
         public string authornum { get; set; }
     }
+
+    public class PublisherViewModel
+    {
+        public string publishercode { get; set; }
+    }
+
+    public class LocationViewModel
+    {
+        public string branchnum { get; set; }
+    }
 }
