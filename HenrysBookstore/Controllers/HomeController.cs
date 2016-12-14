@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace HenrysBookstore.Controllers
 {
@@ -143,5 +144,32 @@ namespace HenrysBookstore.Controllers
             return View();
         }
 
+        public ActionResult BrowseByLocation(string branchnum = "")
+        {
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                if (branchnum.Length > 0)
+                {
+                    int branchnumint = int.Parse(branchnum);
+                    var locationQuery = dbContext.BRANCHes.Include(X => X.INVENTORies.Select(y => y.BOOK)).Where(x => x.BRANCH_NUM == branchnumint);
+                    BRANCH selectedBRANCH = locationQuery.First();
+                    ViewBag.selectedBRANCH = selectedBRANCH;
+                    
+                }
+
+                var allLocationsQuery = dbContext.BRANCHes;
+                List<BRANCH> BRANCHlist = allLocationsQuery.ToList();
+                List<SelectListItem> BRANCHSelectList = new List<SelectListItem>();
+                foreach(BRANCH b in BRANCHlist)
+                {
+                    BRANCHSelectList.Add(new SelectListItem { Text = b.BRANCH_NAME, Value = b.BRANCH_NUM.ToString() });
+                }
+                ViewBag.BRANCHES = BRANCHSelectList;
+            }
+
+            return View();
+        }
+
     }
 }
+

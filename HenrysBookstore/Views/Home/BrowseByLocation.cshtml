@@ -1,0 +1,56 @@
+﻿@model HenrysBookstore.Models.LocationViewModel
+@{
+    ViewBag.Title = "BrowseByLocation";
+}
+
+<div class="sidebarcolumn">
+    @Html.Partial("_sidebar")
+</div>
+<div class="content-wrapper">
+    <h2>Browse by Location</h2>
+    @using (Html.BeginForm("BrowseByLocation", "Home", FormMethod.Get, new { @class = "browseform" }))
+    {
+        @Html.DropDownListFor(x => x.branchnum, (List<SelectListItem>)ViewBag.BRANCHES, "Please select a Location", new { onchange = "this.form.submit()" });
+    }
+    <div class="branchdetailtablewrapper">
+        <table class="bookdetailtable">
+            @if(ViewBag.selectedBRANCH != null)
+            {
+                <tr>
+                    <td>Branch Number</td>
+                    <td>@ViewBag.selectedBRANCH.BRANCH_NUM</td>
+                </tr>
+                <tr>
+                    <td>Branch Name</td>
+                    <td>@ViewBag.selectedBRANCH.BRANCH_NAME</td>
+                </tr>
+                <tr>
+                    <td>Branch Location</td>
+                    <td>@ViewBag.selectedBRANCH.BRANCH_LOCATION</td>
+                </tr>
+                <tr>
+                    <td>Number of Employees</td>
+                    <td>@ViewBag.selectedBRANCH.NUM_EMPLOYEES</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="bookdetailtablewrapper">
+        <table class="bookdetailtable">
+            @if (ViewBag.selectedBRANCH != null)
+            {
+                <tr class="headertablerow">
+                    <td>Title</td>
+                    <td>Quantity On Hand</td>
+                </tr>
+                foreach (INVENTORY i in ViewBag.selectedBRANCH.INVENTORies)
+                {
+                    <tr>
+                        <td>@i.BOOK.TITLE</td>
+                        <td>@i.ON_HAND</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

@@ -321,6 +321,7 @@
     <Content Include="Views\Home\BookDetails.cshtml" />
     <Content Include="Views\Home\BrowseByAuthor.cshtml" />
     <Content Include="Views\Home\BrowseByPublisher.cshtml" />
+    <Content Include="Views\Home\BrowseByLocation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
