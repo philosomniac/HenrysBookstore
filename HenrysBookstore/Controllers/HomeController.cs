@@ -89,5 +89,32 @@ namespace HenrysBookstore.Controllers
 
             return View(selectedBook);
         }
+
+        public ActionResult BrowseByAuthor(string authornum = "")
+        {
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                
+                if(authornum.Length > 0)
+                {
+                    int authornumint = int.Parse(authornum);
+                    var bookQuery = dbContext.BOOKs.Include("WROTEs").Include("PUBLISHER")
+                        .Where(x => x.WROTEs.Count(y => y.AUTHOR_NUM == authornumint) > 0);
+
+                    ViewBag.BookList = bookQuery.ToList();
+                    
+                }
+
+                var authorQuery = dbContext.AUTHORs;
+                List<AUTHOR> authorList = authorQuery.ToList();
+                List<SelectListItem> authorSelectList = new List<SelectListItem>();
+                foreach (var a in authorList)
+                {
+                    authorSelectList.Add(new SelectListItem { Text = (a.AUTHOR_FIRST + a.AUTHOR_LAST), Value = a.AUTHOR_NUM.ToString() });
+                }
+                ViewBag.authors = authorSelectList;
+            }
+                return View();
+        }
     }
 }

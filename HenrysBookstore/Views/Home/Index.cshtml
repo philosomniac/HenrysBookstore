@@ -16,11 +16,11 @@
 
 <div class="navbox">
     <div class="navbox-text">
-        @Html.ActionLink("Browse by Author", "Author", "Home", new { @class = "whitelink" })
+        @Html.ActionLink("Browse by Author", "BrowseByAuthor", "Home", new { @class = "whitelink" })
         @*Browse By Author*@
     </div>
     <div class="navimagelink">
-        <a href='@Url.Action("Author","Home")'>
+        <a href='@Url.Action("BrowseByAuthor","Home")'>
             <img src="~/Content/Images/author.jpg" />
            </a>
     </div>
@@ -28,11 +28,11 @@
 
 <div class="navbox">
     <div class="navbox-text">
-        @Html.ActionLink("Browse by Publisher", "Publisher", "Home", new { @class = "whitelink" })
+        @Html.ActionLink("Browse by Publisher", "BrowseByPublisher", "Home", new { @class = "whitelink" })
         @*Browse By Publisher*@
     </div>
     <div class="navimagelink">
-        <a href='@Url.Action("Publisher","Home")'>
+        <a href='@Url.Action("BrowseByPublisher","Home")'>
             <img src="~/Content/Images/publisher.jpg" />
         </a>
     </div>
@@ -40,11 +40,11 @@
 
 <div class="navbox">
     <div class="navbox-text">
-        @Html.ActionLink("Browse by Location", "Location", "Home", new { @class = "whitelink" })
+        @Html.ActionLink("Browse by Location", "BrowseByLocation", "Home", new { @class = "whitelink" })
         @*Browse By Location*@
     </div>
     <div class="navimagelink">
-        <a href='@Url.Action("Location","Home")'>
+        <a href='@Url.Action("BrowseByLocation","Home")'>
             <img src="~/Content/Images/bookstore.jpg" />
         </a>
     </div>

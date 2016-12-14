@@ -1,0 +1,42 @@
+﻿@model HenrysBookstore.Models.AuthorViewModel
+@{
+    ViewBag.Title = "BrowseByAuthor";
+}
+
+<div class="sidebarcolumn">
+    @Html.Partial("_sidebar")
+</div>
+<div class="content-wrapper">
+    <h2>Browse by Author</h2>
+    @using (Html.BeginForm("BrowseByAuthor", "Home", FormMethod.Get, new {@class="browseform"}))
+    {
+        @Html.DropDownListFor(x => x.authornum, (List<SelectListItem>)ViewBag.authors, "Please select an author", new { onchange="this.form.submit()"});
+    }
+
+    <div class="bookdetailtablewrapper">
+        <table class="bookdetailtable">
+            @if(ViewBag.BookList != null)
+            {
+                <tr class="headertablerow">
+                    <td>Book Code</td>
+                    <td>Title</td>
+                    <td>Type</td>
+                    <td>Price</td>
+                    <td>Paperback?</td>
+                    <td>Publisher</td>
+                </tr>
+                foreach(BOOK b in ViewBag.BookList)
+                {
+                    <tr>
+                        <td>@b.BOOK_CODE</td>
+                        <td>@b.TITLE</td>
+                        <td>@b.TYPE</td>
+                        <td>@b.PRICE</td>
+                        <td>@b.PAPERBACK</td>
+                        <td>@b.PUBLISHER.PUBLISHER_NAME</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

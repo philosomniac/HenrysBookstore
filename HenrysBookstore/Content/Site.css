@@ -145,3 +145,6 @@ footer{
     border: 1px solid black;
     width: 350px;
 }
+.headertablerow{
+    font-weight:bold;
+}

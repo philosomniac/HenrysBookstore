@@ -207,6 +207,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BOOK.cs" />
+    <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="noStock2.cs">
@@ -318,6 +319,7 @@
     <Content Include="Views\Home\Inventory.cshtml" />
     <Content Include="Views\Shared\_sidebar.cshtml" />
     <Content Include="Views\Home\BookDetails.cshtml" />
+    <Content Include="Views\Home\BrowseByAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
