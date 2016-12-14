@@ -127,3 +127,21 @@ footer{
     width:125px;
     height:193px;
 }
+
+.bookdetails{
+
+}
+
+.booklargeimage{
+    width:397px;
+    height:600px;
+}
+
+.bookdetailtablewrapper{
+    margin-top:10px;
+}
+
+.bookdetailtable, tr, td{
+    border: 1px solid black;
+    width: 350px;
+}

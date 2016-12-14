@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "BookDetails";
+}
+
+<div class="sidebarcolumn">
+    @Html.Partial("_sidebar")
+</div>
+<div class="content-wrapper">
+    <h2>Book Details</h2>
+    <div class="bookdetails">
+        <img class="booklargeimage" src="@ViewBag.selectedBook.getLargeImagePath()" />
+    </div>
+    <div class="bookdetailtablewrapper">
+        <table class="bookdetailtable">
+            <tr>
+                <td>Title</td>
+                <td>@ViewBag.selectedBook.TITLE</td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>@ViewBag.selectedBook.TYPE</td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td>@ViewBag.selectedBook.PRICE.ToString("c")</td>
+            </tr>
+            <tr>
+                <td>Paperback?</td>
+                <td>@ViewBag.selectedBook.PAPERBACK</td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td>@ViewBag.PUBLISHER_NAME</td>
+            </tr>
+            <tr>
+                <td>Book Code</td>
+                <td>@ViewBag.selectedBook.BOOK_CODE</td>
+            </tr>
+            <tr>
+                <td>Written By</td>
+                <td>@ViewBag.AUTHOR_LAST, @ViewBag.AUTHOR_FIRST</td>
+            </tr>
+        </table>
+    </div>
+    <div class="inventorybylocationtablewrapper">
+        <h4>Inventory by Location</h4>
+        <table class="bookdetailtable">
+            <tr>
+                <td>Location</td>
+                <td>On Hand Quantity</td>
+            </tr>
+            @foreach (INVENTORY i in ViewBag.Inventories)
+            {
+                <tr>
+                    <td>@i.BRANCH.BRANCH_NAME</td>
+                    <td>@i.ON_HAND</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

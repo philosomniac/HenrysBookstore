@@ -45,5 +45,49 @@ namespace HenrysBookstore.Controllers
 
             return View();
         }
+
+        public ActionResult BookDetails(string bookcode = "")
+        {
+            BOOK selectedBook = new BOOK();
+
+
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                
+                //var bookQuery = dbContext.BOOKs.Include("PUBLISHER").Include("INVENTORies").Where(x => x.BOOK_CODE == bookcode);
+                var bookQuery = dbContext.BOOKs.Include("PUBLISHER").Include("INVENTORies").Where(x => x.BOOK_CODE == bookcode);
+                selectedBook = bookQuery.FirstOrDefault();
+
+                if (selectedBook == null)
+                {
+                    var defaultBookQuery = dbContext.BOOKs;
+                    selectedBook = defaultBookQuery.First();
+                }
+
+                ViewBag.selectedBook = selectedBook;
+
+                ViewBag.PUBLISHER_NAME = selectedBook.PUBLISHER.PUBLISHER_NAME;
+                ViewBag.PUBLISHER_CODE = selectedBook.PUBLISHER_CODE;
+
+                // get inventories
+                var InventoryQuery = dbContext.INVENTORies.Include("BRANCH").Where(x => x.BOOK_CODE == selectedBook.BOOK_CODE);
+                List<INVENTORY> InventoryList = InventoryQuery.ToList();
+                ViewBag.INVENTORies = InventoryList;
+
+                // get author using the book detail DB view
+                var authorQuery = dbContext.vBookDetails.Where(x => x.BOOK_CODE == selectedBook.BOOK_CODE);
+                ViewBag.AUTHOR_LAST = authorQuery.First().AUTHOR_LAST;
+                ViewBag.AUTHOR_FIRST = authorQuery.First().AUTHOR_FIRST;
+                ViewBag.AUTHOR_NUM = authorQuery.First().AUTHOR_NUM;
+                
+
+
+            }
+
+            ViewBag.selectedBook = selectedBook;
+            
+
+            return View(selectedBook);
+        }
     }
 }
