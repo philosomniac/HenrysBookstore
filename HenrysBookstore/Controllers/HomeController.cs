@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using HenrysBookstore.Models;
 
 namespace HenrysBookstore.Controllers
 {
@@ -170,6 +171,29 @@ namespace HenrysBookstore.Controllers
             return View();
         }
 
+        public ActionResult ContactManagement()
+        {
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                var branchQuery = dbContext.BRANCHes;
+                List<BRANCH> branchList = branchQuery.ToList();
+                List<SelectListItem> BRANCHSelectList = new List<SelectListItem>();
+                foreach (BRANCH b in branchList)
+                {
+                    BRANCHSelectList.Add(new SelectListItem { Text = b.BRANCH_NAME, Value = b.BRANCH_NUM.ToString() });
+                }
+                ViewBag.branches = BRANCHSelectList;
+            }
+
+            return View();
+        }
+
+        public JsonResult _contactManagementSubmitted(ContactManagementViewModel model)
+        {
+            System.Threading.Thread.Sleep(4000);
+            //return PartialView();
+            return Json("Complete!");
+        }
     }
 }
 

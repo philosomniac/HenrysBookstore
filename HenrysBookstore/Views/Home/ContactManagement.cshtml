@@ -1,0 +1,52 @@
+﻿@model HenrysBookstore.Models.ContactManagementViewModel
+@{
+    ViewBag.Title = "ContactManagement";
+}
+
+<div class="sidebarcolumn">
+    @Html.Partial("_sidebar")
+</div>
+<div class="content-wrapper">
+    <h2>Contact Management</h2>
+    <div id="loading" style="display: none">
+        Loading...
+        <img src="~/Content/Images/pleasewait.gif" />
+    </div>
+    <div id="complete"></div>
+    <div id="contactform">
+        @using (Ajax.BeginForm(
+        "_contactManagementSubmitted", "Home",
+        new AjaxOptions
+        {
+            HttpMethod = "Post",
+            InsertionMode = InsertionMode.Replace,
+            LoadingElementId = "loading",
+            LoadingElementDuration = 500,
+            UpdateTargetId = "contactform",
+        }))
+        {
+            <fieldset>
+                <label>First name:</label>
+                @Html.TextBoxFor(x => x.FirstName, "")
+
+                <label>Last name:</label>
+                @Html.TextBoxFor(x => x.LastName, "")
+
+                <label>Email address:</label>
+                @Html.TextBoxFor(x => x.EmailAddress, "")
+
+                <label>Confirm Email:</label>
+                @Html.TextBoxFor(x => x.ConfirmEmailAddress, "")
+
+                <label>Branch:</label>
+                @Html.DropDownListFor(x => x.Branch, (List<SelectListItem>)ViewBag.branches)
+
+                <label>Comments:</label>
+                @Html.TextAreaFor(x => x.Comments, "")
+
+                <input class="button" type="submit" value="submit" />
+
+            </fieldset>
+        }
+    </div>
+</div>
