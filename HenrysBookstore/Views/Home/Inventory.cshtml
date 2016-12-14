@@ -12,8 +12,9 @@
     @foreach(BOOK book in ViewBag.BookList)
     {
         <div class="book">
-            @*TODO: hyperlink this*@
-            <img class="bookimage" src="@book.getThumbnailPath()" />
+            <a href='@Url.Action("BookDetails","Home", new { bookcode = book.BOOK_CODE})'>
+                <img class="bookimage" src="@book.getThumbnailPath()" />
+            </a>
         </div>
     }
     </div>

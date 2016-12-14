@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td>Publisher</td>
-                <td>@ViewBag.PUBLISHER_NAME</td>
+                <td>@Html.ActionLink((string)ViewBag.PUBLISHER_NAME,"BrowseByPublisher", "Home", new {publishercode = ViewBag.PUBLISHER_CODE }, new { })</td>
             </tr>
             <tr>
                 <td>Book Code</td>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
                 <td>Written By</td>
-                <td>@ViewBag.AUTHOR_LAST, @ViewBag.AUTHOR_FIRST</td>
+                <td>@Html.ActionLink((string)(ViewBag.AUTHOR_LAST +", " + ViewBag.AUTHOR_FIRST),"BrowseByAuthor",new { authornum = ViewBag.AUTHOR_NUM }, new { })</td>
             </tr>
         </table>
     </div>
@@ -53,7 +53,7 @@
             @foreach (INVENTORY i in ViewBag.Inventories)
             {
                 <tr>
-                    <td>@i.BRANCH.BRANCH_NAME</td>
+                    <td>@Html.ActionLink((string)i.BRANCH.BRANCH_NAME,"BrowseByLocation","Home", new { branchnum = i.BRANCH_NUM }, new { })</td>
                     <td>@i.ON_HAND</td>
                 </tr>
             }

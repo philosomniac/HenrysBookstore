@@ -28,12 +28,12 @@
                 foreach(BOOK b in ViewBag.BookList)
                 {
                     <tr>
-                        <td>@b.BOOK_CODE</td>
+                        <td>@Html.ActionLink((string)b.BOOK_CODE,"BookDetails","Home", new {bookcode = b.BOOK_CODE }, new { })</td>
                         <td>@b.TITLE</td>
                         <td>@b.TYPE</td>
                         <td>@b.PRICE</td>
                         <td>@b.PAPERBACK</td>
-                        <td>@b.PUBLISHER.PUBLISHER_NAME</td>
+                        <td>@Html.ActionLink((string)b.PUBLISHER.PUBLISHER_NAME,"BrowseByPublisher","Home", new {publishercode = b.PUBLISHER_CODE }, new { })</td>
                     </tr>
                 }
             }

@@ -46,7 +46,7 @@
                 foreach (INVENTORY i in ViewBag.selectedBRANCH.INVENTORies)
                 {
                     <tr>
-                        <td>@i.BOOK.TITLE</td>
+                        <td>@Html.ActionLink((string)i.BOOK.TITLE,"BookDetails","Home", new {bookcode= i.BOOK_CODE }, new { })</td>
                         <td>@i.ON_HAND</td>
                     </tr>
                 }
