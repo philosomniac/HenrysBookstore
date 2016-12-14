@@ -115,3 +115,15 @@ footer{
     margin-left:250px;
     padding-left:20px;
 }
+.inventorybooks{
+
+}
+.book{
+    width:130px;
+    float:left;
+    margin-top:3px;
+}
+.bookimage{
+    width:125px;
+    height:193px;
+}

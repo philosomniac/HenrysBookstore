@@ -29,6 +29,20 @@ namespace HenrysBookstore.Controllers
 
         public ActionResult Inventory()
         {
+            List<BOOK> BookList = new List<BOOK>(); // holds all of the books we're going to display
+
+            using (HENRYEntities dbContext = new HENRYEntities())
+            {
+                var bookQuery = dbContext.BOOKs.Where(x => x != null);
+
+                foreach (BOOK b in bookQuery)
+                {
+                    BookList.Add(b);
+                }
+
+                ViewBag.BookList = BookList;
+            }
+
             return View();
         }
     }

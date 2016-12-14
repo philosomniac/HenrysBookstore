@@ -7,15 +7,15 @@ namespace HenrysBookstore
 {
     public partial class BOOK
     {
-        private string thumbnailpath;
-        private string largeimagepath;
-        private string basepath;
+        private string thumbnailpath = string.Empty;
+        private string largeimagepath = string.Empty;
+        private string basepath = string.Empty;
         private string largeimagefilename = "large.jpg";
         private string thumbnailfilename = "thumb.jpg";
 
         private void Initialize()
         {
-            basepath = $@"/Content/Imaages/{this.BOOK_CODE}/";
+            basepath = $@"/Content/Images/{this.BOOK_CODE}/";
             largeimagepath = basepath + largeimagefilename;
             thumbnailpath = basepath + thumbnailfilename;
         }

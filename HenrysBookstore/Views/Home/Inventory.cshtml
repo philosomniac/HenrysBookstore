@@ -8,6 +8,14 @@
 </div>
 <div class="content-wrapper">
     <h2>Inventory</h2>
-
+    <div class="inventorybooks">
+    @foreach(BOOK book in ViewBag.BookList)
+    {
+        <div class="book">
+            @*TODO: hyperlink this*@
+            <img class="bookimage" src="@book.getThumbnailPath()" />
+        </div>
+    }
+    </div>
 </div>
 
